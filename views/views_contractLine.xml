@@ -1,0 +1,83 @@
+<odoo>
+  <data>
+    <!-- Membuat View Tree/List Contract Line -->
+
+    <record id="contract_lines_view_tree" model="ir.ui.view">
+      <field name="name">contract.lines.tree</field>
+      <field name="model">contract.management.line</field>
+      <field name="arch" type="xml">
+        <tree string="Contract Line">
+          <field name="contract_id"/>
+          <field name="name"/>
+          <field name="date"/>
+          <field name="percent" widget="percentage"/>
+          <field name="amount"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Membuat View Form Contract Line -->
+
+    <record id="contract_line_view_form" model="ir.ui.view">
+      <field name="name">contract.line.form</field>
+      <field name="model">contract.management.line</field>
+      <field name="arch" type="xml">
+        <form string="Contract Line Form">
+          <header>
+            <button name="action_close" type="object" string="Close Termin" states="running" class="oe_highlight" />
+            <button name="action_run" type="object" string="Re-run Termin (TEST)" states="close" class="oe_highlight" />
+            <button name="remind_before_date_termin_TEST" type="object" string="Reminder (TEST)" class="oe_highlight" />
+            <field name="state" widget="statusbar"/>
+          </header>
+          <sheet>
+            <widget name="web_ribbon" title="Running" bg_color="bg-success" attrs="{'invisible': [('state', '!=', 'running')]}"/>
+            <widget name="web_ribbon" title="Close" bg_color="bg-danger" attrs="{'invisible': [('state', '!=', 'close')]}"/>
+            <div class="oe_form_sheet">
+              <group col="2">
+                <group class="oe_subgroup">
+                  <field name="contract_id" attrs="{'readonly': [('state', '=', 'close')]}"/>
+                  <field name="name" attrs="{'readonly': [('state', '=', 'close')]}"/>
+                  <field name="date" attrs="{'readonly': [('state', '=', 'close')]}"/>
+                  <field name="state" attrs="{'readonly': [('state', '=', 'close')]}"/>
+                  <field name="nota_verif" attrs="{'readonly': [('state', '=', 'close')]}"/>
+                  <field name="notify_before" attrs="{'readonly': [('state', '=', 'close')]}"/>
+                  <field name="email_to" attrs="{'readonly': [('state', '=', 'close')]}"/>
+                  <field name="email_cc" attrs="{'readonly': [('state', '=', 'close')]}"/>
+                </group>
+                <group col="5" class="oe_subgroup">
+                  <field name="percent" widget="percentage" attrs="{'readonly': [('state', '=', 'close')]}"/>
+                  <field name="amount" widget="monetary" attrs="{'readonly': [('state', '=', 'close')]}"/>
+                  <field name="currency_id" groups="base.group_multi_currency" invisible='1'/>
+                </group>
+              </group>
+
+            </div>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Membuat View Pivot Contract Line -->
+
+    <record id="contract_line_view_pivot" model="ir.ui.view">
+      <field name="name">contract.line.pivot</field>
+      <field name="model">contract.management.line</field>
+      <field name="arch" type="xml">
+        <pivot string="Contract Line">
+          <field name="contract_id" type="col"/>
+          <field name="state" type="col"/>
+          <field name="date" type="row" interval="month"/>
+          <field name="amount" string="Amount" type="measure"/>
+        </pivot>
+      </field>
+    </record>
+
+    <!-- Actions -->
+
+    <record id="contract_lines_action" model="ir.actions.act_window">
+      <field name="name">Contract Lines</field>
+      <field name="res_model">contract.management.line</field>
+      <field name="view_mode">tree,form,pivot</field>
+    </record>
+  </data>
+</odoo>

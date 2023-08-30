@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="email_notify_termin" model="mail.template">
+            <field name="name">Email Notifikasi Termin</field>
+            <field name="model_id" ref="contract_management_system.model_contract_management_line"/>
+            <field name="auto_delete" eval="False"/>
+            <field name="subject">Reminder Pembayaran {{object.name.name}} untuk kontrak {{object.contract_id.name}}</field>
+            <field name="email_from">admin@bulog.co.id</field>
+            <field name="email_to">{{object.email_to}}</field>
+            <field name="email_cc">{{object.email_cc}}</field>
+            <field name="body_html" type="html">
+                <p>
+                    Reminder terkait kontrak <t t-out="object.contract_id.name"/>,<br/>
+                    segera selesaikan pembayaran untuk <t t-out="object.name.name"/>
+ sebesar <t t-out="object.percent*100"/>% dari nilai kontrak, yaitu sebesar <t t-out="'Rp {:,.2f}'.format(object.amount).replace(',', '_').replace('.', ',').replace('_', '.')"/>
+    <br/>
+                    sebelum tanggal <t t-out="datetime.datetime.strftime(object.date, '%d %B %Y')"/>
+</p>
+</field>
+</record>
+</data>
+</odoo>

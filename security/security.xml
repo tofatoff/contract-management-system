@@ -1,0 +1,25 @@
+<odoo>
+
+
+    <!-- Membuat Category Group -->
+
+    <record id="module_category_contract_management_system" model="ir.module.category">
+        <field name="name">Contract Management</field>
+        <field name="parent_id" ref="base.module_category_human_resources" />
+        <field name="sequence">11</field>
+    </record>
+
+    <!-- Membuat Group -->
+
+    <record id="group_contract_management_system_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref="module_category_contract_management_system"/>
+    </record>
+    <record id="group_contract_management_system_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="category_id" ref="module_category_contract_management_system"/>
+        <field name="implied_ids" eval="[(4, ref('group_contract_management_system_user'))]"/>
+    </record>
+
+
+</odoo>

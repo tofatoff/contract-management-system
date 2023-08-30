@@ -1,0 +1,48 @@
+<odoo>
+    <data>
+        <!-- Membuat View Tree/List Contract -->
+
+        <record id="contract_files_view_tree" model="ir.ui.view">
+            <field name="name">contract.files.tree</field>
+            <field name="model">contract.management.files</field>
+            <field name="arch" type="xml">
+                <tree string="File Kontrak">
+                    <field name="contract"/>
+                    <field name="category"/>
+                    <field name="name" invisible="1"/>
+                    <field name="file" filename="name"/>
+                    <field name="notes"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Membuat View Form Contract -->
+
+        <record id="contract_files_view_form" model="ir.ui.view">
+            <field name="name">contract.files.form</field>
+            <field name="model">contract.management.files</field>
+            <field name="arch" type="xml">
+                <form string="File Kontrak">
+                    <sheet>
+                        <group col="2">
+                            <!-- <field name="contract"/> -->
+                            <field name="category"/>
+                            <field name="name" invisible="1"/>
+                            <field name="file" filename="name"/>
+                            <field name="notes"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Actions -->
+
+        <record id="contract_files_action" model="ir.actions.act_window">
+            <field name="name">Contract files</field>
+            <field name="res_model">contract.management.files</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

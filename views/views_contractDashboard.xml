@@ -1,0 +1,42 @@
+<odoo>
+    <data>
+
+        <record id="act_contract_calendar" model="ir.actions.act_window">
+            <field name="name">Contracts</field>
+            <field name="res_model">contract.management</field>
+            <field name="view_mode">calendar</field>
+            <field name="view_id" ref="contract_management_system.contract_view_calendar"/>
+        </record>
+
+        <record id="dashboard_form_view" model="ir.ui.view">
+            <field name="name">Dashboard Form</field>
+            <field name="model">board.board</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Dashboard">
+                    <board style="1-2">
+                        <column>
+                            <action string="Contracts run this month" name="%(act_contract_calendar)"/>
+                            <action string="Contracts run this month" name="%(act_contract_calendar)"/>
+                        </column>
+                        <column>
+                            <action string="Contracts run this month" name="%(act_contract_calendar)"/>
+                        </column>
+                    </board>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- Actions -->
+
+        <record id="contracts_dashboard_action" model="ir.actions.act_window">
+            <field name="name">Contracts</field>
+            <field name="res_model">board.board</field>
+            <field name="view_mode">form</field>
+            <field name="usage">menu</field>
+            <field name="view_id" ref="dashboard_form_view" />
+        </record>
+
+    </data>
+</odoo>

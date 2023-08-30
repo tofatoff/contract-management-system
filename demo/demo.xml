@@ -1,0 +1,46 @@
+<odoo>
+  <data>
+    <!-- Contract Management -->
+    <record id="demo_contract_management_1" model="contract.management.system">
+      <field name="name">Contract Management 1</field>
+      <field name="partner_id">1</field>
+      <field name="total">1234567</field>
+      <field name="state">draft</field>
+    </record>
+    <record id="demo_contract_management_2" model="contract.management.system">
+      <field name="name">Contract Management 2</field>
+      <field name="partner_id">2</field>
+      <field name="total">1234567</field>
+      <field name="state">confirm</field>
+    </record>
+    <record id="demo_contract_management_3" model="contract.management.system">
+      <field name="name">Contract Management 3</field>
+      <field name="partner_id">3</field>
+      <field name="total">1234567</field>
+      <field name="state">running</field>
+    </record>
+    <!-- Contract Management Line -->
+    <record id="demo_contract_management_line_1" model="contract.management.system">
+      <field name="contract_id">1</field>
+      <field name="name">Contract Management Line 1</field>
+      <field name="date">2023-08-01</field>
+      <field name="percent">1.0</field>
+      <field name="amount">1.0</field>
+    </record>
+    <record id="demo_contract_management_line_2" model="contract.management.system">
+      <field name="contract_id">2</field>
+      <field name="name">Contract Management Line 2</field>
+      <field name="date">2023-08-02</field>
+      <field name="percent">2.0</field>
+      <field name="amount">2.0</field>
+    </record>
+    <record id="demo_contract_management_line_3" model="contract.management.system">
+      <field name="contract_id">3</field>
+      <field name="name">Contract Management Line 3</field>
+      <field name="date">2023-08-03</field>
+      <field name="percent">3.0</field>
+      <field name="amount">3.0</field>
+    </record>
+
+  </data>
+</odoo>

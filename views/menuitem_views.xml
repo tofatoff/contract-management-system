@@ -1,0 +1,15 @@
+<odoo>
+    <!-- Menu Item -->
+    <menuitem name="Contract Management" id="menu_dashboard_contract_management" web_icon="static/description/odoo_icon.png"/>
+    
+    <menuitem name="Dashboard" id="menu_bar_contract_management_dashboard" parent="menu_dashboard_contract_management" sequence="2" action="contracts_dashboard_action"/>
+
+    <menuitem name="Menu" id="menu_bar_contract_management" parent="menu_dashboard_contract_management" sequence="1"/>
+    <menuitem id="menu_item_contract" name="Contracts" parent="menu_bar_contract_management" action="contracts_action"/>
+    <menuitem id="menu_item_contract_line" name="Contract Lines" parent="menu_bar_contract_management" action="contract_lines_action"/>
+    <!-- <menuitem id="menu_item_contract_files" name="Contract Files" parent="menu_bar_contract_management" action="contract_files_action"/> -->
+
+    <menuitem name="Configurations" id="menu_bar_contract_management_config" parent="menu_dashboard_contract_management" sequence="3" groups="group_contract_management_system_manager"/>
+    <menuitem id="menu_item_contract_termin" name="Contract Termin" parent="menu_bar_contract_management_config" action="contract_termin_action"/>
+
+</odoo>
